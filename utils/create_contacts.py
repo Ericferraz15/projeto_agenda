@@ -18,8 +18,8 @@ if __name__ == "__main__":
     from random import choice
     from contact.models import Contact, category
 
-    #Contact.objects.all().delete()
-    #category.objects.all().delete()
+    Contact.objects.all().delete()
+    category.objects.all().delete()
 
     fake = faker.Faker('pt_BR')
     categories = ["amigos", "familia", "trabalho",]
@@ -42,15 +42,15 @@ if __name__ == "__main__":
 
         django_contacts.append(
         Contact(
-            fist_name=first_name,
-            last_name=first_name,
-            fone=phone,
+            first_name=first_name,
+            last_name=last_name,
+            phone=phone,
             email=email,
             created_date=created_date,
             description=description,
-            categry=category,
+            Category= category,
         )
         )
 
-        if len(django_contacts) > 0:
-            Contact.objects.bulk_create(django_contacts)
+    if len(django_contacts) > 0:
+        Contact.objects.bulk_create(django_contacts)
