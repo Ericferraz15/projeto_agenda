@@ -3,12 +3,14 @@
 <head>
     {% include 'global/partials/_head.html' %}
 </head>
-<body>
-    {% include 'global/partials/_header.html' %}
+    <body>
+        {% include 'global/partials/_header.html' %}
 
-    <main class="content">
-        {%block content%}{% endblock %}
-    </main>
-    
-</body>
+        <main class="content">
+            {%block content%}{% endblock %}
+            {% include 'global/partials/_pagination.html' %}    
+
+        </main>
+
+    </body>
 </html>
