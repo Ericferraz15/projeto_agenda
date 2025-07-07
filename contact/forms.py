@@ -2,8 +2,9 @@
 from contact.models import Contact
 from django import forms 
 from . import models
+from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError #type: ignore
-
+from django.contrib.auth.forms import UserCreationForm
 
 class ContactForms(forms.ModelForm):
     picture = forms.ImageField(
@@ -50,3 +51,27 @@ class ContactForms(forms.ModelForm):
             )
         return first_name
 
+class RegisterForm(UserCreationForm):
+    first_name = forms.CharField(
+        required=True,
+        min_length= 3,
+    )
+    last_name = forms.CharField(
+        required=True,
+        min_length= 3,
+    )
+    email = forms.CharField()
+    class Meta():
+        model = User
+        fields = (
+            "first_name","last_name", "email","username","password1","password2"
+        )
+
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+
+        if User.objects.filter(email = email).exists():
+            self.add_error(
+                "email", ValidationError ("email ja existe", code= "invalid")
+
+            )
