@@ -6,21 +6,21 @@ from django.core.exceptions import ValidationError #type: ignore
 
 
 class ContactForms(forms.ModelForm):
+    picture = forms.ImageField(
+        widget=forms.FileInput(
+            attrs={
+                "accept": "image/*"
+            }
+        )
+    )
     class Meta:
-        model = Contact
+        model = models.Contact
         fields = (
             "first_name","last_name", "phone",
             "email","description", "Category",
+            "picture",
             )
 
-        widgets = {
-            "first_name" : forms.TextInput(
-                attrs= {
-                    "class":"classe - a",
-                    "placeholder":" Escreva aqui"
-                }
-            )
-        }
 
     def clean(self):
         first_name = self.cleaned_data.get("first_name")

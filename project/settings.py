@@ -120,8 +120,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'base_static',
 ]
 STATIC_ROOT = BASE_DIR / 'static' #COLETA OS ARQUIVOS ESTÁTICOS 
-MEDIA_URL = 'media/' # URL DE ARQUIVOS MANDADOS PELO USUÁRIO
-MEDIA_ROOT = BASE_DIR / 'media' # PASTA ONDE OS ARQUIVOS MANDADOS PELO USUÁRIO SERÃO SALVOS
+MEDIA_URL = '/media/' # URL DE ARQUIVOS MANDADOS PELO USUÁRIO
+MEDIA_ROOT = BASE_DIR / 'media/' # PASTA ONDE OS ARQUIVOS MANDADOS PELO USUÁRIO SERÃO SALVOS
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -15,11 +15,23 @@
                 <div class="form-group">
                     <label for="{{ field.id_for_label}}">{{ field.label }}</label>
                     {{field}}
-
                     {{field.errors}}
+
+                    {% if field.heap_text %}
+                        <p class"help-text">{{ field.heap_text}}</p>
+                    {% endif %}
                 </div>
+
+
+                {% if field.name == 'picture' and field.value.url %}
+                    <div class= "forma-group">        
+                        <img src = "Imagem_do_WhatsApp_de_2025-06-26_às_08.32.58_6fcfc122.jpg" alt='nada'>
+                    </div>
+                {% endif %}
+                {% endfor %}    
             </div>
-            {% endfor %}
+
+
 
             <div class="form-content">
                 <div class="form-group">
@@ -28,6 +40,5 @@
             </div>
         </form>
     </div>
-        create contact
-    </h1>
-{%endblock content %}
+
+{% endblock content %}
