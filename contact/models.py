@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 #ID (primary key)
 
 class category (models.Model):
@@ -24,6 +25,12 @@ class Contact(models.Model):
         blank=True,
         null=True,
         )
+    owner = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        blank=True, null=True
+    )
+   
     
     def __str__(self) -> str:
         return f"{self.first_name} {self.last_name}"

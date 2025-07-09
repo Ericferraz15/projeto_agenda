@@ -13,7 +13,8 @@ class ContactForms(forms.ModelForm):
             attrs={
                 "accept": "image/*"
             }
-        )
+        ),
+        required=False
     )
     class Meta:
         model = models.Contact
@@ -82,7 +83,6 @@ class RegisterForm(UserCreationForm):
             )
         return email
             
-
 class RegisterUpdateForm (forms.ModelForm):
     first_name = forms.CharField(
         min_length=2,
@@ -126,7 +126,6 @@ class RegisterUpdateForm (forms.ModelForm):
     def save(self, commit= True): 
         cleaned_data = self.cleaned_data
         user = super().save(commit=False)
-
         password = cleaned_data.get("password1")
 
         if password:
